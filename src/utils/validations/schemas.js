@@ -19,7 +19,14 @@ const userSchema = Joi.object({
   image: Joi.string(),
 });
 
+const categorySchema = Joi.object({
+  name: Joi.string().required().messages({
+    'any.required': '{#label} is required',
+  }),
+});
+
 module.exports = {
   loginSchema,
   userSchema,
+  categorySchema,
 };
