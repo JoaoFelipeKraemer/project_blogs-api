@@ -10,7 +10,13 @@ const auth = async (req, res, next) => {
 
     try {
     const payload = jwt.verify(token, secret);
-   
+    // {
+    //     data: {
+    //       userId: 1
+    //     },
+    //     iat: 1656616422,
+    //     exp: 1657221222
+    //   }
     req.user = payload;
 
    return next();
