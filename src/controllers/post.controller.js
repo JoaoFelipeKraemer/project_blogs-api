@@ -25,7 +25,23 @@ const getPostById = async (req, res) => {
  }
  return res.status(200).json(resolved);
 };
+
+const editById = async (req, res) => {
+    const { id } = req.params;
+    const { payload } = req.user;
+    const { title, content } = req.body;
+    const { data } = payload;
+    const { userId } = data;
+    const user = await postService.getPostById(id);
+    if (userId !== user.user.id) {
+        return res.status(401).json({ message: 'Unauthorized user' });
+    }
+    const exemplo = await postService.editById(id, { title, content });
+    return res.status(200).json(exemplo);
+};
+
     module.exports = {
+        editById,
         postBlog,
         getAllPosts,
         getPostById,
