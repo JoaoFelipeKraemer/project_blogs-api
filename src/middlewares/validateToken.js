@@ -17,7 +17,7 @@ const auth = async (req, res, next) => {
     //     iat: 1656616422,
     //     exp: 1657221222
     //   }
-    req.user = payload;
+    req.user = { payload };
 
    return next();
     } catch (e) {

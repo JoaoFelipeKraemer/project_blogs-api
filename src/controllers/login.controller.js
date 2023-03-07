@@ -13,7 +13,8 @@ const login = async (req, res) => {
   if (!user) {
     return res.status(400).json({ message: 'Invalid fields' });
   }
-  const token = jwt.sign({ email }, secret, jwtConfig);
+  const newUserId = user.dataValues.id;
+  const token = jwt.sign({ data: { userId: newUserId } }, secret, jwtConfig);
 
   res.status(200).send({ token });
 };

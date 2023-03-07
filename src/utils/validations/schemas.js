@@ -28,10 +28,10 @@ const categorySchema = Joi.object({
 const postSchema = Joi.object({
   title: Joi.string().required(),
   content: Joi.string().required(),
-  categoryIds: Joi.array().required().messages({
-    'any.required': 'one or more "categoryIds" not found',
-    'string.empty': 'one or more "categoryIds" not found',
-  }),
+  categoryIds: Joi.array().required(),
+}).messages({
+  'any.required': 'Some required fields are missing',
+  'string.empty': 'Some required fields are missing',
 });
 
 module.exports = {

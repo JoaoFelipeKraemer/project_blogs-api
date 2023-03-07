@@ -14,7 +14,8 @@ const createUser = async (req, res) => {
   if (user === email) {
     return res.status(409).json({ message: 'User already registered' });
   }
-  const token = jwt.sign({ email }, secret, jwtConfig);
+  const newUserId = user.dataValues.id;
+  const token = jwt.sign({ data: { userId: newUserId } }, secret, jwtConfig);
 
   res.status(201).send({ token });
 };
