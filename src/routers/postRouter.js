@@ -7,5 +7,6 @@ const routerPost = express.Router();
 
 routerPost.post('/', auth, middlewarevalidatePost, postController.blablablba);
 routerPost.get('/', auth, postController.getAllPosts);
+routerPost.get('/:id', auth, postController.getPostById);
 
 module.exports = routerPost;

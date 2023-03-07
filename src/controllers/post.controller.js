@@ -16,7 +16,16 @@ const getAllPosts = async (_req, res) => {
     return res.status(200).json(resolved);
 };
 
+const getPostById = async (req, res) => {
+ const { id } = req.params;
+ const resolved = await postService.getPostById(id);
+ if (!resolved) {
+    return res.status(404).json({ message: 'Post does not exist' });
+ }
+ return res.status(200).json(resolved);
+};
     module.exports = {
         blablablba,
         getAllPosts,
+        getPostById,
       };
