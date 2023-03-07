@@ -6,5 +6,6 @@ const middlewarevalidatePost = require('../middlewares/validationLogin');
 const routerPost = express.Router();
 
 routerPost.post('/', auth, middlewarevalidatePost, postController.blablablba);
+routerPost.get('/', auth, postController.getAllPosts);
 
 module.exports = routerPost;
