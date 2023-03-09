@@ -6,6 +6,7 @@ const middlewarevalidateEdit = require('../middlewares/validationEdit');
 
 const routerPost = express.Router();
 routerPost.delete('/:id', auth, postController.deleteById);
+routerPost.get('/search', auth, postController.getSearch);
 routerPost.post('/', auth, middlewarevalidatePost, postController.postBlog);
 routerPost.put('/:id', auth, middlewarevalidateEdit, postController.editById);
 routerPost.get('/', auth, postController.getAllPosts);
