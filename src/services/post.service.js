@@ -59,7 +59,14 @@ const editById = async (id, { title, content }) => {
     return all;
 };
 
+const deleteById = async (id) => {
+    const del = BlogPost.destroy(
+        { where: { id } },
+    );
+    return del;
+};
 module.exports = {
+    deleteById,
     editById,
     createPost,
     getAllPosts,

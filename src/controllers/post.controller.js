@@ -40,7 +40,24 @@ const editById = async (req, res) => {
     return res.status(200).json(exemplo);
 };
 
+const deleteById = async (req, res) => {
+    const { id } = req.params;
+    const { payload } = req.user;
+    const { data } = payload;
+    const { userId } = data;
+    const user = await postService.getPostById(id);
+    if (!user) {
+        return res.status(404).json({ message: 'Post does not exist' });
+    }
+    if (userId !== user.user.id) {
+        return res.status(401).json({ message: 'Unauthorized user' });
+    } 
+    await postService.deleteById(id);
+    return res.status(204).end();
+};
+
     module.exports = {
+        deleteById,
         editById,
         postBlog,
         getAllPosts,
