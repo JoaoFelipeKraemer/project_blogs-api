@@ -22,7 +22,15 @@ const getById = async (userId) => {
     return user;
 };
 
+const deleteById = async (id) => {
+    const del = User.destroy(
+        { where: { id } },
+    );
+    return del;
+};
+
 module.exports = {
+    deleteById,
     createUser,
     getById,
     getAll,
